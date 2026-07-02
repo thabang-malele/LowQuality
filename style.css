@@ -222,7 +222,40 @@ nav a:hover {
     flex-wrap: wrap;
     gap: 16px;
 }
+.merch-coming-soon {
+    min-height: 70vh;
+}
 
+.coming-soon-box {
+    min-height: 320px;
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--card-light), var(--card));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+    padding: 3rem;
+}
+
+.coming-label {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 900;
+}
+
+.coming-soon-box h3 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.coming-soon-box p {
+    max-width: 520px;
+    color: var(--muted);
+    line-height: 1.8;
+}
 .social-links a {
     display: flex;
     align-items: center;
