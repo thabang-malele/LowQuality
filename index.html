@@ -1,193 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LowQuality | Clothing Store</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/photoswipe/photoswipe.css" />
     <link rel="icon" href="favicon.png" type="image">
 </head>
+
 <body>
 
-<header class="site-header">
-    <a href="#home" ><img class="logo" src="assets/icons/logo_b.png" alt=""></a>
+    <header class="site-header">
+        <a href="#home"><img class="logo" src="assets/icons/logo_b.png" alt=""></a>
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#featured">Featured</a>
-        <a href="#merch">Merch</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#featured">Featured</a>
+            <a href="#merch">Merch</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-<main>
+    <main>
 
-    <section id="home" class="hero">
-        <p class="eyebrow">Simple. Raw. Real.</p>
-        <h1>LOWQUALITY</h1>
+        <section id="home" class="hero">
+            <p class="eyebrow">Simple. Raw. Real.</p>
+            <h1>LOWQUALITY</h1>
 
-        <p class="hero-text">
-            Monochrome essentials and apparel designed for everyday wear.
-        </p>
+            <p class="hero-text">
+                A black-and-white clothing brand built on simplicity, contrast,
+                and clean everyday pieces.
+            </p>
 
-        <div class="hero-buttons">
-            <a href="#featured" class="btn btn-light">View Merch</a>
-            <a href="#about" class="btn btn-dark">Learn More</a>
-        </div>
-    </section>
-
-<section id="featured" class="section">
-    <p class="eyebrow">Featured Pieces</p>
-    <h2>Handpicked Essentials</h2>
-
-    <div class="product-grid">
-
-        <!-- Hoodie -->
-        <article class="product-card">
-            <div class="product-image">
-                <img src="assets//apparel/hoodie_bw.png" alt="LowQuality Hoodie">
+            <div class="hero-buttons">
+                <a href="#featured" class="btn btn-light">View Merch</a>
+                <a href="#about" class="btn btn-dark">Learn More</a>
             </div>
-            <br>
-            <h3>LQ Weighted Hoodie</h3>
-            <p class="price">R499.00</p>
-            <p>Classic Heavyweight hoodie with centered chest logo.</p>
-        </article>
+        </section>
 
-        <!-- Tee -->
-        <article class="product-card">
-            <div class="product-image">
-                <img src="assets//apparel/shirt_wb.png" alt="LowQuality Tee">
+        <section id="featured" class="section">
+            <p class="eyebrow">Featured Pieces</p>
+            <h2>Handpicked Essentials</h2>
+
+            <div class="product-grid">
+
+                <!-- Hoodie -->
+                <article class="product-card">
+                    <a
+                        class="product-image"
+                        href="assets/apparel/hoodie_bw.png"
+                        data-pswp-width="1024"
+                        data-pswp-height="1024"
+                        target="_blank"
+                    >
+                        <img src="assets/apparel/hoodie_bw.png" alt="LowQuality Hoodie">
+                    </a>
+                    <br>
+                    <h3>LQ Weighted Hoodie</h3>
+                    <p class="price">R499.00</p>
+                    <p>Classic Heavyweight hoodie with centered chest logo.</p>
+                </article>
+
+                <!-- Tee -->
+                <article class="product-card">
+                    <a
+                        class="product-image"
+                        href="assets/apparel/shirt_wb.png"
+                        data-pswp-width="1024"
+                        data-pswp-height="1024"
+                        target="_blank"
+                    >
+                        <img src="assets/apparel/shirt_wb.png" alt="LowQuality Tee">
+                    </a>
+                    <br>
+                    <h3>LQ T-Shirt</h3>
+                    <p class="price">R249.00</p>
+                    <p>Classic oversized tee with centered chest logo.</p>
+                </article>
+
+                <!-- Tote Bag -->
+                <article class="product-card">
+                    <a
+                        class="product-image"
+                        href="assets/apparel/bag_wb.png"
+                        data-pswp-width="1024"
+                        data-pswp-height="1024"
+                        target="_blank"
+                    >
+                        <img src="assets/apparel/bag_wb.png" alt="LowQuality Tote Bag">
+                    </a>
+                    <br>
+                    <h3>LQ Tote Bag</h3>
+                    <p class="price">R149.99</p>
+                    <p>Minimal canvas tote built for everyday use and carry.</p>
+                </article>
+
+                <!-- Bucket Hat -->
+                <article class="product-card">
+                    <a
+                        class="product-image"
+                        href="assets/apparel/bucket_hat_wb.png"
+                        data-pswp-width="1024"
+                        data-pswp-height="1024"
+                        target="_blank"
+                    >
+                        <img src="assets/apparel/bucket_hat_wb.png" alt="LowQuality Bucket Hat">
+                    </a>
+                    <br>
+                    <h3>LQ Bucket Hat</h3>
+                    <p class="price">R199.99</p>
+                    <p>Clean, minimal, everyday bucket hat with tagged logo.</p>
+                </article>
+
             </div>
-            <br>
-            <h3>LQ T-Shirt</h3>
-            <p class="price">R249.00</p>
-            <p>Classic oversized tee with centered chest logo.</p>
-        </article>
 
-        <!-- Tote Bag -->
-        <article class="product-card">
-            <div class="product-image">
-                <img src="assets/apparel/bag_wb.png" alt="LowQuality Tote Bag">
+            <a href="#contact" class="text-link">Place Order →</a>
+        </section>
+
+        <section id="merch" class="section merch-coming-soon">
+            <p class="eyebrow">All Merch</p>
+            <h2>Available Pieces & Apparel</h2>
+
+            <div class="product-grid">
+
+                <!-- Hoodie -->
+                <article class="product-card">
+                    <a
+                        class="product-image"
+                        href="assets/apparel/hoodie_bw.png"
+                        data-pswp-width="1024"
+                        data-pswp-height="1024"
+                        target="_blank"
+                    >
+                        <img src="assets/apparel/hoodie_bw.png" alt="LowQuality Hoodie">
+                    </a>
+                    <br>
+                    <h3>LQ Weighted Hoodie</h3>
+                    <p class="price">R499.00</p>
+                    <p>Classic Heavyweight hoodie with centered chest logo.</p>
+                </article>
+
+                <!-- Tee -->
+                <article class="product-card">
+                    <a
+                        class="product-image"
+                        href="assets/apparel/shirt_wb.png"
+                        data-pswp-width="1024"
+                        data-pswp-height="1024"
+                        target="_blank"
+                    >
+                        <img src="assets/apparel/shirt_wb.png" alt="LowQuality Tee">
+                    </a>
+                    <br>
+                    <h3>LQ T-Shirt</h3>
+                    <p class="price">R249.00</p>
+                    <p>Classic oversized tee with centered chest logo.</p>
+                </article>
+
+                <!-- Cargo Pants -->
+                <article class="product-card">
+                    <a
+                        class="product-image"
+                        href="assets/apparel/cargopants_b.png"
+                        data-pswp-width="1024"
+                        data-pswp-height="1024"
+                        target="_blank"
+                    >
+                        <img src="assets/apparel/cargopants_b.png" alt="LowQuality Cargo Pants">
+                    </a>
+                    <br>
+                    <h3>LQ Weighted Cargo Pants</h3>
+                    <p class="price">R399.00</p>
+                    <p>Classic Heavyweight cargo pants with striped branding</p>
+                </article>
+                <!-- Sweatpants -->
+                <article class="product-card">
+                    <a
+                        class="product-image"
+                        href="assets/apparel/sweatpants_g.png"
+                        data-pswp-width="1024"
+                        data-pswp-height="1024"
+                        target="_blank"
+                    >
+                        <img src="assets/apparel/sweatpants_g.png" alt="LowQuality Sweatpants">
+                    </a>
+                    <br>
+                    <h3>LQ Sweatpants</h3>
+                    <p class="price">R299.00</p>
+                    <p>Classic oversized sweatpants with centered chest logo.</p>
+                </article>
+
+                <!-- Tote Bag -->
+                <article class="product-card">
+                    <a
+                        class="product-image"
+                        href="assets/apparel/bag_wb.png"
+                        data-pswp-width="1024"
+                        data-pswp-height="1024"
+                        target="_blank"
+                    >
+                        <img src="assets/apparel/bag_wb.png" alt="LowQuality Tote Bag">
+                    </a>
+                    <br>
+                    <h3>LQ Tote Bag</h3>
+                    <p class="price">R149.99</p>
+                    <p>Minimal canvas tote built for everyday use and carry.</p>
+                </article>
+
+                <!-- Bucket Hat -->
+                <article class="product-card">
+                    <a
+                        class="product-image"
+                        href="assets/apparel/bucket_hat_wb.png"
+                        data-pswp-width="1024"
+                        data-pswp-height="1024"
+                        target="_blank"
+                    >
+                        <img src="assets/apparel/bucket_hat_wb.png" alt="LowQuality Bucket Hat">
+                    </a>
+                    <br>
+                    <h3>LQ Bucket Hat</h3>
+                    <p class="price">R199.99</p>
+                    <p>Clean, minimal, everyday bucket hat with tagged logo.</p>
+                </article>
+
+
+                <!-- Glove -->
+                <article class="product-card">
+                    <a
+                        class="product-image"
+                        href="assets/apparel/glove_b.png"
+                        data-pswp-width="1024"
+                        data-pswp-height="1024"
+                        target="_blank"
+                    >
+                        <img src="assets/apparel/glove_b.png" alt="LowQuality Glove">
+                    </a>
+                    <br>
+                    <h3>LQ Gloves</h3>
+                    <p class="price">R99.99</p>
+                    <p>Clean, minimal, fingerless gloves with tagged logo.</p>
+                </article>
+
+
+                <!-- Socks -->
+                <article class="product-card">
+                    <a
+                        class="product-image"
+                        href="assets/apparel/socks_w.png"
+                        data-pswp-width="1024"
+                        data-pswp-height="1024"
+                        target="_blank"
+                    >
+                        <img src="assets/apparel/socks_w.png" alt="LowQuality Socks">
+                    </a>
+                    <br>
+                    <h3>LQ Socks</h3>
+                    <p class="price">R79.99</p>
+                    <p>Minimal canvas socks tailored for everyday comfort.</p>
+                </article>
+
+
             </div>
-            <br>
-            <h3>LQ Tote Bag</h3>
-            <p class="price">R149.99</p>
-            <p>Minimal canvas tote built for everyday use and carry.</p>
-        </article>
+        </section>
+        <section id="about" class="about-section">
+            <div>
+                <p class="eyebrow">About Us</p>
+                <h2>Built From Less.</h2>
 
-        <!-- Bucket Hat -->
-        <article class="product-card">
-            <div class="product-image">
-                <img src="assets//apparel/bucket_hat_wb.png" alt="LowQuality Bucket Hat">
+                <p>
+                    LowQuality is a black-and-white clothing brand built around the idea
+                    that simple does not mean empty. Contrast
+                    creates meaning.
+                </p>
+                <br>
+                <p>
+                    LowQuality turns basic clothing into something sharp & elegant,
+                    a brand that both expresses and demands creativity.
+                </p>
+                <br>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/sovdoesart" target="_blank" aria-label="">
+                        <img src="assets/icons/mdi--instagram.svg" alt="Instagram icon">
+                        Instagram
+                    </a>
+
+                    <a href="https://www.facebook.com/sovranoTengoku" target="_blank" aria-label="LinkedIn">
+                        <img src="assets/icons/ic--baseline-facebook.svg" alt="LinkedIn icon">
+                        Facebook
+                    </a>
+
+                    <a href="https://www.youtube.com/@sovtalksfiction" target="_blank" aria-label="YouTube">
+                        <img src="assets/icons/mdi--youtube.svg" alt="YouTube icon">
+                        YouTube
+                    </a>
+                </div>
             </div>
-            <br>
-            <h3>LQ Bucket Hat</h3>
-            <p class="price">R199.99</p>
-            <p>Clean, minimal, everyday bucket hat with tagged logo.</p>
-        </article>
 
-    </div>
+            <div class="graphic-box">
+                <div class="globe">◯</div>
+                <p>Simple Design.<br>Real Impact.</p>
+            </div>
+        </section>
 
-    <a href="#contact" class="text-link">Place Order →</a>
-</section>
-    
-<section id="merch" class="section merch-coming-soon">
-    <p class="eyebrow">All Merch</p>
-    <h2>Coming Soon</h2>
+        <section id="contact" class="contact-section">
+            <p class="eyebrow">Contact</p>
+            <h2>Like What You See?</h2>
 
-    <div class="coming-soon-box">
-        <p class="coming-label">Collection 01</p>
-        <h3>Currently Being Prepared</h3>
+            <p>
+                Contact me for any inquiries, collaborations,
+                custom requests, or to place an order.
+            </p>
 
-        <p>
-            The first LowQuality drop is being refined.
-            A curated selection of monochrome essentials will be available soon.
-        </p>
+            <form action="https://formspree.io/f/xaqgnopz" method="POST" class="contact-form">
+                <input type="email" name="email" placeholder="Your Email" required />
 
-        <a href="#contact" class="btn btn-light">Notify Me</a>
-    </div>
-</section>
-    <section id="about" class="about-section">
-    <div>
-        <p class="eyebrow">About Us</p>
-        <h2>Built From Less.</h2>
+                <textarea name="message" placeholder="Your Inquiry" rows="6" required></textarea>
 
-        <p>
-            LowQuality is a black-and-white clothing brand built around the idea
-            that simple does not mean empty. Contrast
-            creates meaning.
-        </p>
-        <br>
-        <p>
-            LowQuality turns basic clothing into something sharp & elegant,
-            a brand that both expresses and demands creativity.
-        </p> 
-        <br>
-        <div class="social-links">
-            <a href="https://www.instagram.com/sovdoesart" target="_blank" aria-label="">
-                <img src="assets/icons/mdi--instagram.svg" alt="Instagram icon">
-                Instagram
-            </a>
+                <button type="submit" class="btn btn-light">
+                    Send Inquiry
+                </button>
+            </form>
+        </section>
 
-            <a href="https://www.facebook.com/sovranoTengoku" target="_blank" aria-label="LinkedIn">
-                <img src="assets/icons/ic--baseline-facebook.svg" alt="LinkedIn icon">
-                Facebook
-            </a>
+    </main>
 
-            <a href="https://www.youtube.com/@sovtalksfiction" target="_blank" aria-label="YouTube">
-                <img src="assets/icons/mdi--youtube.svg" alt="YouTube icon">
-                YouTube
-            </a>
-        </div>
-    </div>
+    <footer>
+        <p>© 2026 LowQuality. All rights reserved.</p>
+        <p>Designed with purpose.</p>
+    </footer>
 
-    <div class="graphic-box">
-        <div class="globe">◯</div>
-        <p>Simple Design.<br>Real Impact.</p>
-    </div>
-</section>
-
-    <section id="contact" class="contact-section">
-        <p class="eyebrow">Contact</p>
-        <h2>Like What You See?</h2>
-
-        <p>
-            Contact me for any inquiries, collaborations,
-            custom requests, or to place an order.
-        </p>
-
-        <form
-            action="https://formspree.io/f/xaqgnopz"
-            method="POST"
-            class="contact-form"
-        >
-            <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-            />
-
-            <textarea
-                name="message"
-                placeholder="Your Inquiry"
-                rows="6"
-                required
-            ></textarea>
-
-            <button type="submit" class="btn btn-light">
-                Send Inquiry
-            </button>
-        </form>
-    </section>
-
-</main>
-
-<footer>
-    <p>© 2026 LowQuality. All rights reserved.</p>
-    <p>Designed with purpose.</p>
-</footer>
-
+    <script type="module" src="script.js"></script>
 </body>
+
 </html>
