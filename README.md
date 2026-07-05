@@ -9,7 +9,7 @@ Built around a monochrome design language with a focus on simplicity, contrast, 
 
 ### Live Demo
 
-https://lowquality-store.netlify.app/
+https://lowquality.co.za
 
 ## Features
 
