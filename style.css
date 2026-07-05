@@ -299,6 +299,7 @@ nav a:hover {
 }
 
 .graphic-box {
+    padding: 1.5rem;
     min-height: 300px;
     border: 1px solid var(--border);
     display: flex;
