@@ -310,12 +310,22 @@ nav a:hover {
     color: var(--muted);
 }
 
-.globe {
-    font-size: 8rem;
-    line-height: 1;
-    color: var(--text);
-    opacity: 0.7;
+.profile-photo {
+    width: 250px;
+    height: 250px;
+    
+    object-fit: cover;
+
+    border: 1px solid var(--border);
+
+    filter: grayscale(100%);
+    transition: transform 0.3s ease;
 }
+
+.profile-photo:hover {
+    transform: scale(1.03);
+}
+
 
 .contact-section {
     padding: 5rem 5%;
