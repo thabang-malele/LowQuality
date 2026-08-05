@@ -24,6 +24,7 @@ https://lowquality.co.za
 
 - HTML5
 - CSS3
+- JavaScript
 
 ---
 
