@@ -490,28 +490,26 @@ nav a.active {
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
-    width: 100%;
+    width: 80%;
     max-width: 480px;
     margin: 0 auto;
 }
 
 .qr-container {
     background: #ffffff;
-    padding: 1.2rem;
-    border-radius: 8px;
+    padding: 1.25rem;
+    border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 184px;
-    height: 184px;
+    width: fit-content;
     margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-svg.fake-qr {
-    width: 160px !important;
-    height: 160px !important;
-    max-width: 160px !important;
-    max-height: 160px !important;
+.payment-qr-img {
+    width: 160px;
+    height: 160px;
     color: #000000;
     display: block;
 }
