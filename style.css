@@ -43,7 +43,6 @@ body.fade-in { opacity: 1; transition: opacity 0.35s ease-in-out; }
 body.fade-out { opacity: 0; transition: opacity 0.35s ease-in-out; }
 
 /* Sticky Frosted Glass Header */
-/* Fix Sticky Header Background for both Light & Dark themes */
 .site-header {
     height: 78px;
     padding: 0 5%;
@@ -362,7 +361,7 @@ nav a.active {
 }
 
 /* Cart & Checkout Modules */
-.cart-page, .checkout-page, .confirmation-page {
+.cart-page, .checkout-page {
     min-height: calc(100vh - 150px);
 }
 
@@ -454,16 +453,44 @@ nav a.active {
     border-top: 1px solid var(--border);
 }
 
-/* Lock down QR Code size and Payment Card layout */
+/* Order Confirmation Page */
+.confirmation-page {
+    min-height: calc(100vh - 150px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1.2rem;
+}
+
+.confirmation-box {
+    max-width: 540px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+}
+
+.confirmation-desc {
+    color: var(--muted);
+    margin: 1rem 0 2rem 0;
+    line-height: 1.6;
+    max-width: 480px;
+}
+
 .payment-card {
     background: linear-gradient(180deg, var(--card-light), var(--card));
     border: 1px solid var(--border);
-    padding: 2.5rem;
+    padding: 2.5rem 2rem;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 1.5rem;
+    width: 100%;
     max-width: 480px;
     margin: 0 auto;
 }
@@ -475,15 +502,56 @@ nav a.active {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: fit-content;
+    width: 184px;
+    height: 184px;
+    margin: 0 auto;
 }
 
-.fake-qr {
-    width: 160px;
-    height: 160px;
-    max-width: 100%;
+svg.fake-qr {
+    width: 160px !important;
+    height: 160px !important;
+    max-width: 160px !important;
+    max-height: 160px !important;
     color: #000000;
     display: block;
+}
+
+.payment-instructions {
+    width: 100%;
+    text-align: center;
+}
+
+.ref-note {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+}
+
+.ref-note span {
+    color: var(--text);
+    text-decoration: underline;
+}
+
+.pay-link-btn {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.confirmation-actions {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.continue-link {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.continue-link:hover {
+    color: var(--text);
 }
 
 footer {
@@ -500,6 +568,7 @@ footer {
     .product-grid { grid-template-columns: repeat(2, 1fr); }
     .about-section { grid-template-columns: 1fr; }
 }
+
 /* Mobile Hamburger Button Styling */
 .mobile-menu-btn {
     display: none;
