@@ -95,8 +95,8 @@ function renderProductGrid() {
     if (!grid) return;
 
     const isFeaturedPage = document.body.contains(document.getElementById("featured"));
-    const itemsToRender = isFeaturedPage 
-        ? PRODUCTS.filter(p => p.featured) 
+    const itemsToRender = isFeaturedPage
+        ? PRODUCTS.filter(p => p.featured)
         : PRODUCTS;
 
     grid.innerHTML = itemsToRender.map(product => `
@@ -151,13 +151,13 @@ function renderCartPage() {
                         <div class="cart-option-group">
                             <span>Size:</span>
                             <select class="cart-select size-select" data-cart-id="${item.cartItemId}">
-                                ${["S","M","L","XL"].map(s => `<option value="${s}" ${item.size === s ? 'selected' : ''}>${s}</option>`).join('')}
+                                ${["S", "M", "L", "XL"].map(s => `<option value="${s}" ${item.size === s ? 'selected' : ''}>${s}</option>`).join('')}
                             </select>
                         </div>
                         <div class="cart-option-group">
                             <span>Color:</span>
                             <select class="cart-select color-select" data-cart-id="${item.cartItemId}">
-                                ${["Black","White"].map(c => `<option value="${c}" ${item.color === c ? 'selected' : ''}>${c}</option>`).join('')}
+                                ${["Black", "White"].map(c => `<option value="${c}" ${item.color === c ? 'selected' : ''}>${c}</option>`).join('')}
                             </select>
                         </div>
                     </div>
@@ -239,6 +239,36 @@ function renderCheckoutPage() {
     if (hiddenInput) hiddenInput.value = summaryText;
 }
 
+function initCheckoutFormListener() {
+    const checkoutForm = document.getElementById("checkout-form");
+    if (!checkoutForm) return;
+
+    checkoutForm.addEventListener("submit", (e) => {
+        const emailInput = document.getElementById("customer-email");
+        if (emailInput && emailInput.value) {
+            // Store the user's email in local storage upon checkout submission
+            localStorage.setItem("customerEmail", emailInput.value.trim());
+        }
+    });
+}
+
+function initYocoPaymentLink() {
+    const payBtn = document.getElementById('yoco-pay-btn');
+    if (!payBtn) return;
+
+    // 1. Fetch dynamic amount from cart logic
+    const cart = getCart();
+    const computedTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const finalAmount = computedTotal > 0 ? computedTotal.toFixed(2) : '150.00';
+
+    // 2. Fetch the stored email address, with a fallback if empty
+    const customerEmail = localStorage.getItem('customerEmail') || 'customer@example.com';
+
+    // 3. Construct Yoco link using the email address as the reference parameter
+    const baseUrl = "https://pay.yoco.com/lowquality-pty-ltd";
+    payBtn.href = `${baseUrl}?amount=${finalAmount}&reference=${encodeURIComponent(customerEmail)}`;
+}
+
 /* ==========================================================================
    4. Application Utilities (Theme, Nav, Transitions)
    ========================================================================== */
@@ -284,7 +314,6 @@ function initTheme() {
     }
 }
 
-// Improved Navigation Highlighting supporting hashes
 function initNavHighlight() {
     const navLinks = document.querySelectorAll("nav a");
     const currentPath = window.location.pathname.split("/").pop() || "index.html";
@@ -310,7 +339,6 @@ function initNavHighlight() {
     });
 }
 
-// Update highlighting live when scrolling/clicking anchor links
 window.addEventListener("hashchange", initNavHighlight);
 
 function initPageTransitions() {
@@ -333,7 +361,6 @@ function initPageTransitions() {
     });
 }
 
-// Add Mobile Menu Toggle Initialization
 function initMobileMenu() {
     const toggleBtn = document.getElementById("mobile-menu-toggle");
     const navMenu = document.getElementById("nav-menu");
@@ -363,9 +390,11 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCartCount();
     renderCartPage();
     renderCheckoutPage();
+    initYocoPaymentLink();
     initNavHighlight();
     initPageTransitions();
     initMobileMenu();
+    initCheckoutFormListener();
 
     document.body.addEventListener("click", (e) => {
         const addBtn = e.target.closest(".add-to-cart-btn");
