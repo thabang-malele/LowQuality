@@ -13,19 +13,27 @@
 <body>
 
     <header class="site-header">
-        <a href="#home"><img class="logo" src="assets/icons/logo_b.png" alt=""></a>
+        <a href="#home"><img class="logo" src="assets/icons/logo_b.png" alt="LowQuality Logo"></a>
 
         <nav>
             <a href="#home">Home</a>
             <a href="#featured">Featured</a>
-            <a href="#merch">Merch</a>
+            <a href="merch.html">Merch</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
         </nav>
+
+        <a href="cart.html" class="cart-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span>Cart (<span id="cart-count">0</span>)</span>
+        </a>
     </header>
 
     <main>
-
         <section id="home" class="hero">
             <p class="eyebrow">Simple. Raw. Real.</p>
             <h1>LOWQUALITY</h1>
@@ -45,227 +53,62 @@
             <h2>Handpicked Essentials</h2>
 
             <div class="product-grid">
-
-                <!-- Hoodie -->
                 <article class="product-card">
-                    <a
-                        class="product-image"
-                        href="assets/apparel/hoodie_bw.webp"
-                        data-pswp-width="1024"
-                        data-pswp-height="1024"
-                        target="_blank"
-                    >
+                    <a class="product-image" href="assets/apparel/hoodie_bw.webp" data-pswp-width="1024" data-pswp-height="1024" target="_blank">
                         <img src="assets/apparel/hoodie_bw.webp" alt="LowQuality Hoodie">
                     </a>
                     <br>
                     <h3>LQ Weighted Hoodie</h3>
                     <p class="price">R499.00</p>
                     <p>Classic Heavyweight hoodie with centered chest logo.</p>
+                    <button class="add-to-cart-btn btn btn-light" data-id="lq-hoodie" data-name="LQ Weighted Hoodie" data-price="499.00" data-img="assets/apparel/hoodie_bw.webp">
+                        Add to Cart
+                    </button>
                 </article>
 
-                <!-- Tee -->
                 <article class="product-card">
-                    <a
-                        class="product-image"
-                        href="assets/apparel/shirt_wb.webp"
-                        data-pswp-width="1024"
-                        data-pswp-height="1024"
-                        target="_blank"
-                    >
+                    <a class="product-image" href="assets/apparel/shirt_wb.webp" data-pswp-width="1024" data-pswp-height="1024" target="_blank">
                         <img src="assets/apparel/shirt_wb.webp" alt="LowQuality Tee">
                     </a>
                     <br>
                     <h3>LQ T-Shirt</h3>
                     <p class="price">R249.00</p>
                     <p>Classic oversized tee with centered chest logo.</p>
+                    <button class="add-to-cart-btn btn btn-light" data-id="lq-tshirt" data-name="LQ T-Shirt" data-price="249.00" data-img="assets/apparel/shirt_wb.webp">
+                        Add to Cart
+                    </button>
                 </article>
 
-                <!-- Tote Bag -->
                 <article class="product-card">
-                    <a
-                        class="product-image"
-                        href="assets/apparel/bag_wb.webp"
-                        data-pswp-width="1024"
-                        data-pswp-height="1024"
-                        target="_blank"
-                    >
+                    <a class="product-image" href="assets/apparel/bag_wb.webp" data-pswp-width="1024" data-pswp-height="1024" target="_blank">
                         <img src="assets/apparel/bag_wb.webp" alt="LowQuality Tote Bag">
                     </a>
                     <br>
                     <h3>LQ Tote Bag</h3>
                     <p class="price">R149.99</p>
                     <p>Minimal canvas tote built for everyday use and carry.</p>
+                    <button class="add-to-cart-btn btn btn-light" data-id="lq-tote" data-name="LQ Tote Bag" data-price="149.99" data-img="assets/apparel/bag_wb.webp">
+                        Add to Cart
+                    </button>
                 </article>
 
-                <!-- Bucket Hat -->
                 <article class="product-card">
-                    <a
-                        class="product-image"
-                        href="assets/apparel/bucket_hat_wb.webp"
-                        data-pswp-width="1024"
-                        data-pswp-height="1024"
-                        target="_blank"
-                    >
+                    <a class="product-image" href="assets/apparel/bucket_hat_wb.webp" data-pswp-width="1024" data-pswp-height="1024" target="_blank">
                         <img src="assets/apparel/bucket_hat_wb.webp" alt="LowQuality Bucket Hat">
                     </a>
                     <br>
                     <h3>LQ Bucket Hat</h3>
                     <p class="price">R199.99</p>
                     <p>Clean, minimal, everyday bucket hat with tagged logo.</p>
+                    <button class="add-to-cart-btn btn btn-light" data-id="lq-bucket-hat" data-name="LQ Bucket Hat" data-price="199.99" data-img="assets/apparel/bucket_hat_wb.webp">
+                        Add to Cart
+                    </button>
                 </article>
-
             </div>
 
-            <a href="#merch" class="text-link">View All Merch →</a>
+            <a href="merch.html" class="text-link">SEE ALL MERCH →</a>
         </section>
 
-               <section id="merch" class="section merch-coming-soon">
-            <p class="eyebrow">All Merch</p>
-            <h2>Available Pieces & Apparel</h2>
-
-            <div class="product-grid">
-
-                <!-- Hoodie -->
-                <article class="product-card">
-                    <a
-                        class="product-image"
-                        href="assets/apparel/hoodie_bw.webp"
-                        data-pswp-width="1024"
-                        data-pswp-height="1024"
-                        target="_blank"
-                    >
-                        <img src="assets/apparel/hoodie_bw.webp" alt="LowQuality Hoodie">
-                    </a>
-                    <br>
-                    <h3>LQ Weighted Hoodie</h3>
-                    <p class="price">R499.00</p>
-                    <p>Classic Heavyweight hoodie with centered chest logo.</p>
-                </article>
-
-                <!-- Tee -->
-                <article class="product-card">
-                    <a
-                        class="product-image"
-                        href="assets/apparel/shirt_wb.webp"
-                        data-pswp-width="1024"
-                        data-pswp-height="1024"
-                        target="_blank"
-                    >
-                        <img src="assets/apparel/shirt_wb.webp" alt="LowQuality Tee">
-                    </a>
-                    <br>
-                    <h3>LQ T-Shirt</h3>
-                    <p class="price">R249.00</p>
-                    <p>Classic oversized tee with centered chest logo.</p>
-                </article>
-
-                <!-- Cargo Pants -->
-                <article class="product-card">
-                    <a
-                        class="product-image"
-                        href="assets/apparel/cargopants_b.webp"
-                        data-pswp-width="1024"
-                        data-pswp-height="1024"
-                        target="_blank"
-                    >
-                        <img src="assets/apparel/cargopants_b.webp" alt="LowQuality Cargo Pants">
-                    </a>
-                    <br>
-                    <h3>LQ Weighted Cargo Pants</h3>
-                    <p class="price">R399.00</p>
-                    <p>Classic Heavyweight cargo pants with striped branding</p>
-                </article>
-                <!-- Sweatpants -->
-                <article class="product-card">
-                    <a
-                        class="product-image"
-                        href="assets/apparel/sweatpants_g.webp"
-                        data-pswp-width="1024"
-                        data-pswp-height="1024"
-                        target="_blank"
-                    >
-                        <img src="assets/apparel/sweatpants_g.webp" alt="LowQuality Sweatpants">
-                    </a>
-                    <br>
-                    <h3>LQ Sweatpants</h3>
-                    <p class="price">R299.00</p>
-                    <p>Classic oversized sweatpants with centered chest logo.</p>
-                </article>
-
-                <!-- Tote Bag -->
-                <article class="product-card">
-                    <a
-                        class="product-image"
-                        href="assets/apparel/bag_wb.webp"
-                        data-pswp-width="1024"
-                        data-pswp-height="1024"
-                        target="_blank"
-                    >
-                        <img src="assets/apparel/bag_wb.webp" alt="LowQuality Tote Bag">
-                    </a>
-                    <br>
-                    <h3>LQ Tote Bag</h3>
-                    <p class="price">R149.99</p>
-                    <p>Minimal canvas tote built for everyday use and carry.</p>
-                </article>
-
-                <!-- Bucket Hat -->
-                <article class="product-card">
-                    <a
-                        class="product-image"
-                        href="assets/apparel/bucket_hat_wb.webp"
-                        data-pswp-width="1024"
-                        data-pswp-height="1024"
-                        target="_blank"
-                    >
-                        <img src="assets/apparel/bucket_hat_wb.webp" alt="LowQuality Bucket Hat">
-                    </a>
-                    <br>
-                    <h3>LQ Bucket Hat</h3>
-                    <p class="price">R199.99</p>
-                    <p>Clean, minimal, everyday bucket hat with tagged logo.</p>
-                </article>
-
-
-                <!-- Glove -->
-                <article class="product-card">
-                    <a
-                        class="product-image"
-                        href="assets/apparel/glove_b.webp"
-                        data-pswp-width="1024"
-                        data-pswp-height="1024"
-                        target="_blank"
-                    >
-                        <img src="assets/apparel/glove_b.webp" alt="LowQuality Glove">
-                    </a>
-                    <br>
-                    <h3>LQ Gloves</h3>
-                    <p class="price">R99.99</p>
-                    <p>Clean, minimal, fingerless gloves with tagged logo.</p>
-                </article>
-
-
-                <!-- Socks -->
-                <article class="product-card">
-                    <a
-                        class="product-image"
-                        href="assets/apparel/socks_w.webp"
-                        data-pswp-width="1024"
-                        data-pswp-height="1024"
-                        target="_blank"
-                    >
-                        <img src="assets/apparel/socks_w.webp" alt="LowQuality Socks">
-                    </a>
-                    <br>
-                    <h3>LQ Socks</h3>
-                    <p class="price">R79.99</p>
-                    <p>Minimal canvas socks tailored for everyday comfort.</p>
-                </article>
-
-
-            </div>
-                   <a href="#contact" class="text-link">Place Order →</a>
-        </section>
         <section id="about" class="about-section">
             <div>
                 <p class="eyebrow">About LQ</p>
@@ -273,7 +116,8 @@
 
                 <p>
                     LowQuality is a black-and-white clothing brand built around the idea
-                    that simple does not mean empty — that CONTRAST creates meaning.
+                    that simple does not mean empty. The idea that CONTRAST is what creates
+                    meaning.
                 </p>
                 <br>
                 <p>
@@ -286,16 +130,14 @@
 
             <div class="graphic-box">
                 <img src="assets/apparel/thabang.jpg" alt="Portrait of Thabang Malele" class="profile-photo">
-                <br>
-                <br>
+                <br><br>
                 <p>Designer | Developer | Founder</p>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/sovdoesart" target="_blank" aria-label="">
+                    <a href="https://www.instagram.com/sovdoesart" target="_blank">
                         <img src="assets/icons/instagram.svg" alt="Instagram icon">
                         Instagram
                     </a>
-
-                    <a href="https://www.youtube.com/@sovtalksfiction" target="_blank" aria-label="YouTube">
+                    <a href="https://www.youtube.com/@sovtalksfiction" target="_blank">
                         <img src="assets/icons/youtube.svg" alt="YouTube icon">
                         YouTube
                     </a>
@@ -309,21 +151,23 @@
             <h2>Like What You See?</h2>
 
             <p>
-                Contact me for any inquiries, collaborations,
-                custom requests, or to place an order.
+                Contact us for inquiries, collaborations, custom requests,
+                or to place an order.
             </p>
 
-            <form action="https://formspree.io/f/xaqgnopz" method="POST" class="contact-form">
-                <input type="email" name="email" placeholder="Your Email" required />
+            <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                <input type="hidden" name="access_key" value="0fe1abfb-c965-4b14-9a2f-18bde9db8925">
+                <input type="hidden" name="redirect" value="https://lowquality.co.za/order-confirmed.html">
+                <input type="hidden" name="subject" value="LOWQUALITY Order Request">
 
-                <textarea name="message" placeholder="Your Inquiry" rows="6" required></textarea>
+                <input type="email" name="email" placeholder="Your Email" autocomplete="email" required>
+                <textarea name="message" id="order-message" placeholder="Your Inquiry or Order Details" rows="8" required></textarea>
 
                 <button type="submit" class="btn btn-light">
-                    Send Inquiry
+                    Send Request
                 </button>
             </form>
         </section>
-
     </main>
 
     <footer>
