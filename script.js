@@ -256,17 +256,14 @@ function initYocoPaymentLink() {
     const payBtn = document.getElementById('yoco-pay-btn');
     if (!payBtn) return;
 
-    // 1. Fetch dynamic amount from cart logic
+    // Calculate total dynamic amount from cart
     const cart = getCart();
     const computedTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
     const finalAmount = computedTotal > 0 ? computedTotal.toFixed(2) : '150.00';
 
-    // 2. Fetch the stored email address, with a fallback if empty
-    const customerEmail = localStorage.getItem('customerEmail') || 'customer@example.com';
-
-    // 3. Construct Yoco link using the email address as the reference parameter
+    // Build URL with ONLY the amount parameter mapped
     const baseUrl = "https://pay.yoco.com/lowquality-pty-ltd";
-    payBtn.href = `${baseUrl}?amount=${finalAmount}&reference=${encodeURIComponent(customerEmail)}`;
+    payBtn.href = `${baseUrl}?amount=${finalAmount}`;
 }
 
 /* ==========================================================================
