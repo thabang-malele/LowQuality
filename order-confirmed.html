@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LowQuality | Order Confirmed</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.png">
+</head>
+
+<body>
+    <header class="site-header">
+        <a href="index.html#home"><img class="logo" src="assets/icons/logo_b.png" alt="LowQuality Logo"></a>
+
+        <nav>
+            <a href="index.html#home">Home</a>
+            <a href="index.html#featured">Featured</a>
+            <a href="merch.html">Merch</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+
+        <a href="cart.html" class="cart-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span>Cart (<span id="cart-count">0</span>)</span>
+        </a>
+    </header>
+
+    <main class="confirmation-page">
+        <section class="section confirmation-box">
+            <p class="eyebrow">Order Received</p>
+            <h2>Complete Your Payment</h2>
+            <p class="confirmation-desc">
+                Your order details have been sent to our team. To finalize and dispatch your items, please complete your instant bank transfer using Ozow below.
+            </p>
+
+            <div class="payment-card">
+                <div class="qr-container">
+                    <!-- Placeholder SVG acting as a fake Ozow QR Code -->
+                    <svg class="fake-qr" viewBox="0 0 100 100" fill="currentColor">
+                        <path d="M0,0 h30 v30 h-30 z M5,5 v20 h20 v-20 z M10,10 h10 v10 h-10 z" />
+                        <path d="M70,0 h30 v30 h-30 z M75,5 v20 h20 v-20 z M80,10 h10 v10 h-10 z" />
+                        <path d="M0,70 h30 v30 h-30 z M5,75 v20 h20 v-20 z M10,80 h10 v10 h-10 z" />
+                        <path d="M35,5 h10 v10 h-10 z M50,5 h15 v5 h-15 z M35,20 h5 v10 h-5 z M50,20 h10 v5 h-10 z" />
+                        <path d="M40,40 h20 v20 h-20 z M45,45 h10 v10 h-10 z" />
+                        <path d="M70,35 h10 v15 h-10 z M85,40 h10 v10 h-10 z M65,55 h15 v5 h-15 z" />
+                        <path d="M35,70 h20 v5 h-20 z M40,80 h15 v15 h-15 z M60,70 h10 v25 h-10 z M75,75 h20 v5 h-20 z M80,85 h15 v10 h-15 z" />
+                    </svg>
+                </div>
+
+                <div class="payment-instructions">
+                    <p class="ref-note"><strong>Reference:</strong> Use your <span>Phone Number</span> or <span>Email</span></p>
+                    <a href="https://pay.ozow.com/demo" target="_blank" rel="noopener" class="btn btn-light pay-link-btn">
+                        Pay Now with Ozow
+                    </a>
+                </div>
+            </div>
+
+            <div class="confirmation-actions">
+                <a href="index.html" class="continue-link">← Return to Home</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 LowQuality. All rights reserved.</p>
+        <p>Designed with purpose.</p>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
