@@ -1,16 +1,22 @@
 import PhotoSwipeLightbox from "./assets/photoswipe/photoswipe-lightbox.esm.js";
 
-// 1. Initialize Lightbox Safely (Only if product grid exists)
-if (document.querySelector(".product-grid")) {
-    const lightbox = new PhotoSwipeLightbox({
-        gallery: ".product-grid",
-        children: ".product-image",
-        pswpModule: () => import("./assets/photoswipe/photoswipe.esm.js")
-    });
-    lightbox.init();
-}
+/* ==========================================================================
+   1. Data Store (Single Source of Truth for Scalable Products)
+   ========================================================================== */
+const PRODUCTS = [
+    { id: "lq-hoodie", name: "LQ Weighted Hoodie", price: 499.00, desc: "Classic Heavyweight hoodie with centered chest logo.", img: "assets/apparel/hoodie_bw.webp", featured: true },
+    { id: "lq-tshirt", name: "LQ T-Shirt", price: 249.00, desc: "Classic oversized tee with centered chest logo.", img: "assets/apparel/shirt_wb.webp", featured: true },
+    { id: "lq-cargo-pants", name: "LQ Weighted Cargo Pants", price: 399.00, desc: "Classic Heavyweight cargo pants with striped branding.", img: "assets/apparel/cargopants_b.webp", featured: false },
+    { id: "lq-sweatpants", name: "LQ Sweatpants", price: 299.00, desc: "Classic oversized sweatpants with centered chest logo.", img: "assets/apparel/sweatpants_g.webp", featured: false },
+    { id: "lq-tote", name: "LQ Tote Bag", price: 149.99, desc: "Minimal canvas tote built for everyday use and carry.", img: "assets/apparel/bag_wb.webp", featured: true },
+    { id: "lq-bucket-hat", name: "LQ Bucket Hat", price: 199.99, desc: "Clean, minimal, everyday bucket hat with tagged logo.", img: "assets/apparel/bucket_hat_wb.webp", featured: true },
+    { id: "lq-gloves", name: "LQ Gloves", price: 99.99, desc: "Clean, minimal, fingerless gloves with tagged logo.", img: "assets/apparel/glove_b.webp", featured: false },
+    { id: "lq-socks", name: "LQ Socks", price: 79.99, desc: "Minimal canvas socks tailored for everyday comfort.", img: "assets/apparel/socks_w.webp", featured: false }
+];
 
-// 2. LocalStorage Helpers
+/* ==========================================================================
+   2. Cart & Storage Module
+   ========================================================================== */
 const CART_STORAGE_KEY = "lowquality_cart";
 
 function getCart() {
@@ -31,11 +37,13 @@ function updateCartCount() {
     }
 }
 
-function addToCart(product) {
+function addToCart(productId) {
+    const product = PRODUCTS.find(p => p.id === productId);
+    if (!product) return;
+
     let cart = getCart();
-    
-    const size = product.size || "M";
-    const color = product.color || "Black";
+    const size = "M";
+    const color = "Black";
     const cartItemId = `${product.id}-${size}-${color}`;
 
     const existingIndex = cart.findIndex(item => item.cartItemId === cartItemId);
@@ -43,13 +51,7 @@ function addToCart(product) {
     if (existingIndex > -1) {
         cart[existingIndex].quantity += 1;
     } else {
-        cart.push({
-            ...product,
-            size,
-            color,
-            cartItemId,
-            quantity: 1
-        });
+        cart.push({ ...product, size, color, cartItemId, quantity: 1 });
     }
 
     saveCart(cart);
@@ -85,7 +87,36 @@ function updateOption(cartItemId, optionKey, newValue) {
     renderCartPage();
 }
 
-// 3. Page Renderers
+/* ==========================================================================
+   3. UI & Catalog Renderers
+   ========================================================================== */
+function renderProductGrid() {
+    const grid = document.querySelector(".product-grid");
+    if (!grid) return;
+
+    const isFeaturedPage = document.body.contains(document.getElementById("featured"));
+    const itemsToRender = isFeaturedPage 
+        ? PRODUCTS.filter(p => p.featured) 
+        : PRODUCTS;
+
+    grid.innerHTML = itemsToRender.map(product => `
+        <article class="product-card">
+            <a class="product-image" href="${product.img}" data-pswp-width="1024" data-pswp-height="1024" target="_blank">
+                <img src="${product.img}" alt="${product.name}">
+            </a>
+            <br>
+            <h3>${product.name}</h3>
+            <p class="price">R${product.price.toFixed(2)}</p>
+            <p>${product.desc}</p>
+            <button class="add-to-cart-btn btn btn-light" data-id="${product.id}">
+                Add to Cart
+            </button>
+        </article>
+    `).join("");
+
+    initPhotoSwipe();
+}
+
 function renderCartPage() {
     const container = document.getElementById("cart-content");
     if (!container) return;
@@ -104,7 +135,7 @@ function renderCartPage() {
     }
 
     let total = 0;
-    let rowsHtml = cart.map(item => {
+    const rowsHtml = cart.map(item => {
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
         return `
@@ -112,9 +143,7 @@ function renderCartPage() {
                 <td>
                     <div class="cart-item-info">
                         <img src="${item.img}" alt="${item.name}" class="cart-item-img">
-                        <div>
-                            <div><strong>${item.name}</strong></div>
-                        </div>
+                        <div><strong>${item.name}</strong></div>
                     </div>
                 </td>
                 <td>
@@ -122,17 +151,13 @@ function renderCartPage() {
                         <div class="cart-option-group">
                             <span>Size:</span>
                             <select class="cart-select size-select" data-cart-id="${item.cartItemId}">
-                                <option value="S" ${item.size === 'S' ? 'selected' : ''}>S</option>
-                                <option value="M" ${item.size === 'M' ? 'selected' : ''}>M</option>
-                                <option value="L" ${item.size === 'L' ? 'selected' : ''}>L</option>
-                                <option value="XL" ${item.size === 'XL' ? 'selected' : ''}>XL</option>
+                                ${["S","M","L","XL"].map(s => `<option value="${s}" ${item.size === s ? 'selected' : ''}>${s}</option>`).join('')}
                             </select>
                         </div>
                         <div class="cart-option-group">
                             <span>Color:</span>
                             <select class="cart-select color-select" data-cart-id="${item.cartItemId}">
-                                <option value="Black" ${item.color === 'Black' ? 'selected' : ''}>Black</option>
-                                <option value="White" ${item.color === 'White' ? 'selected' : ''}>White</option>
+                                ${["Black","White"].map(c => `<option value="${c}" ${item.color === c ? 'selected' : ''}>${c}</option>`).join('')}
                             </select>
                         </div>
                     </div>
@@ -144,9 +169,7 @@ function renderCartPage() {
                     <button class="qty-btn plus" data-cart-id="${item.cartItemId}">+</button>
                 </td>
                 <td>R${itemTotal.toFixed(2)}</td>
-                <td>
-                    <button class="remove-btn" data-cart-id="${item.cartItemId}">Remove</button>
-                </td>
+                <td><button class="remove-btn" data-cart-id="${item.cartItemId}">Remove</button></td>
             </tr>
         `;
     }).join("");
@@ -163,18 +186,14 @@ function renderCartPage() {
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-                ${rowsHtml}
-            </tbody>
+            <tbody>${rowsHtml}</tbody>
         </table>
-
         <div class="cart-summary">
             <div class="cart-total">Total: R${total.toFixed(2)}</div>
             <a href="checkout.html" class="btn btn-light">Proceed to Checkout</a>
         </div>
     `;
 
-    // Dropdown change listeners
     container.querySelectorAll(".size-select").forEach(select => {
         select.addEventListener("change", (e) => updateOption(e.target.dataset.cartId, "size", e.target.value));
     });
@@ -189,7 +208,6 @@ function renderCheckoutPage() {
     const hiddenInput = document.getElementById("hidden-order-details");
 
     if (!itemsContainer) return;
-
     const cart = getCart();
 
     if (cart.length === 0) {
@@ -217,24 +235,83 @@ function renderCheckoutPage() {
     }).join("");
 
     summaryText += `------------------\nTOTAL: R${total.toFixed(2)}`;
-
     totalElement.textContent = `R${total.toFixed(2)}`;
     if (hiddenInput) hiddenInput.value = summaryText;
 }
 
-// 4. Page UI & Navigation
+/* ==========================================================================
+   4. Application Utilities (Theme, Nav, Transitions)
+   ========================================================================== */
+function initPhotoSwipe() {
+    if (document.querySelector(".product-grid")) {
+        const lightbox = new PhotoSwipeLightbox({
+            gallery: ".product-grid",
+            children: ".product-image",
+            pswpModule: () => import("./assets/photoswipe/photoswipe.esm.js")
+        });
+        lightbox.init();
+    }
+}
+
+function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("lowquality_theme", theme);
+
+    const logo = document.getElementById("site-logo");
+    if (logo) {
+        logo.src = theme === "dark" ? "assets/icons/logo_b.png" : "assets/icons/logo_w.png";
+    }
+
+    const icon = document.getElementById("theme-icon");
+    if (icon) {
+        icon.textContent = theme === "dark" ? "☀️" : "🌙";
+    }
+}
+
+function initTheme() {
+    const savedTheme = localStorage.getItem("lowquality_theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = savedTheme || (prefersDark ? "dark" : "light");
+
+    setTheme(initialTheme);
+
+    const toggleBtn = document.getElementById("theme-toggle");
+    if (toggleBtn) {
+        toggleBtn.addEventListener("click", () => {
+            const currentTheme = document.documentElement.getAttribute("data-theme") || "light";
+            setTheme(currentTheme === "dark" ? "light" : "dark");
+        });
+    }
+}
+
+// Improved Navigation Highlighting supporting hashes
 function initNavHighlight() {
     const navLinks = document.querySelectorAll("nav a");
     const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    const currentHash = window.location.hash;
 
     navLinks.forEach(link => {
-        const linkPath = link.getAttribute("href").split("#")[0];
-        if (linkPath && linkPath === currentPath) {
-            navLinks.forEach(l => l.classList.remove("active"));
-            link.classList.add("active");
+        const href = link.getAttribute("href");
+        if (!href) return;
+
+        const [linkPath, linkHash] = href.split("#");
+        const targetPath = linkPath || "index.html";
+        const targetHash = linkHash ? `#${linkHash}` : "";
+
+        if (targetPath === currentPath) {
+            if (currentHash) {
+                link.classList.toggle("active", targetHash === currentHash);
+            } else {
+                link.classList.toggle("active", targetHash === "#home" || targetHash === "");
+            }
+        } else {
+            link.classList.remove("active");
         }
     });
 }
+
+// Update highlighting live when scrolling/clicking anchor links
+window.addEventListener("hashchange", initNavHighlight);
 
 function initPageTransitions() {
     document.body.classList.add("fade-in");
@@ -256,35 +333,49 @@ function initPageTransitions() {
     });
 }
 
-// 5. Global Initialization & Click Delegation
+// Add Mobile Menu Toggle Initialization
+function initMobileMenu() {
+    const toggleBtn = document.getElementById("mobile-menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+    const navLinks = document.querySelectorAll("nav a");
+
+    if (!toggleBtn || !navMenu) return;
+
+    toggleBtn.addEventListener("click", () => {
+        const isOpen = navMenu.classList.toggle("open");
+        toggleBtn.classList.toggle("open", isOpen);
+    });
+
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            navMenu.classList.remove("open");
+            toggleBtn.classList.remove("open");
+        });
+    });
+}
+
+/* ==========================================================================
+   5. Event Listeners & Global Handlers
+   ========================================================================== */
 document.addEventListener("DOMContentLoaded", () => {
-    initPageTransitions();
+    initTheme();
+    renderProductGrid();
     updateCartCount();
     renderCartPage();
     renderCheckoutPage();
     initNavHighlight();
+    initPageTransitions();
+    initMobileMenu();
 
-    // Universal click handler
     document.body.addEventListener("click", (e) => {
-        // Add to Cart
         const addBtn = e.target.closest(".add-to-cart-btn");
         if (addBtn) {
             e.preventDefault();
-            e.stopPropagation();
-
-            const product = {
-                id: addBtn.dataset.id,
-                name: addBtn.dataset.name,
-                price: parseFloat(addBtn.dataset.price),
-                img: addBtn.dataset.img
-            };
-
-            addToCart(product);
+            addToCart(addBtn.dataset.id);
 
             const originalText = addBtn.textContent;
             addBtn.textContent = "Added!";
             addBtn.style.opacity = "0.7";
-
             setTimeout(() => {
                 addBtn.textContent = originalText;
                 addBtn.style.opacity = "1";
@@ -292,7 +383,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Cart Quantities
         const qtyBtn = e.target.closest(".qty-btn");
         if (qtyBtn) {
             e.preventDefault();
@@ -302,7 +392,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Cart Item Removal
         const removeBtn = e.target.closest(".remove-btn");
         if (removeBtn) {
             e.preventDefault();
